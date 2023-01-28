@@ -1,0 +1,95 @@
+/* Import the Fredoka One font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* Apply box-sizing and reset padding and margin for all elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /*border: 1px solid black;*/
+}
+
+/* Set background color and layout for the body */
+body {
+    background: black;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Style and position the clock container */
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 7px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 5rem;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 27rem;
+    flex-wrap: wrap;
+    color: #426DFB;
+    text-shadow: 0 0 5px #2356FF;
+    border: .4rem solid transparent;
+    --angle: 0deg;
+    border-image: conic-gradient(from var(--angle), black, black, blue, black, black, black, black, blue, black, black, black) 1;
+    /* Rotate the clock container continuously */
+    animation: 5s rotate linear infinite;
+}
+
+/* Style the period element */
+#period {
+    display: block;
+    width: 100%;
+}
+
+/* Style the hours, minutes, and seconds elements */
+#hours, #minutes, #seconds {
+    margin-right: 6.5px;
+    width: 6.5rem;
+}
+
+/* Apply animation and color to the hours, minutes, seconds, and period elements */
+#hours, #minutes, #seconds, #period {
+    color: #426DFB;
+    text-shadow: 0 0 5px #2356FF;
+    animation: flux 3s linear infinite;
+    -moz-animation: flux 3s linear infinite;
+    -webkit-animation: flux 3s linear infinite;
+    -o-animation: flux 2s linear infinite;
+}
+
+/* Rotate animation for the clock container */
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+
+/* Declare the --angle variable */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Flux animation for the hours, minutes, seconds, and period elements */
+@keyframes flux {
+  0%{
+    text-shadow: 0 0 1px #1041FF, 0 0 3px #1041FF, 0 0 10px #1041FF, 0 0 10px #1041FF, 0 0 .4px #8BFDFE, .5px .5px .1px #147280;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 .7px #082180, 0 0 1.7px #082180, 0 0 5px #082180, 0 0 5px #082180, 0 0 .2px #082180, .7px .7px .3px #0A3940;
+    color: rgb(19, 178, 214);
+  }
+    
+  100% {
+    text-shadow: 0 0 5px #1e289f, 0 0 6px #0014ff, 0 0 12px #0014ff, 0 0 12px #0014ff, 0 0 .4px #0014ff, .7px .9px .4px #0014ff;
+    color: #28D7FE;
+  }
+}
